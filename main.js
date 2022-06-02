@@ -47,7 +47,7 @@ function gotPoses(results)
 {
   if(results.length > 0)
   {
-
+  console.log(results);
     rightWristY = results[0].pose.rightWrist.y;
     rightWristX = results[0].pose.rightWrist.x;
     scoreRightWrist =  results[0].pose.keypoints[10].score;
@@ -58,12 +58,11 @@ function gotPoses(results)
 function startGame()
 {
    game_status = "start";
-   document.getElementById("status").innerHTML = "Game Is Loaded";
+   document.getElementById("status").innerHTML = "Game Is Loading";
 }
 
 function draw(){
-  if(game_status == "start")
-{
+  
   background(0); 
   image(video, 0, 0, 700, 600);
 
@@ -82,7 +81,9 @@ function draw(){
     circle(rightWristX, rightWristY, 30);
   }
 
-
+  if(game_status == "start")
+  {
+    document.getElementById("status").innerHTML = "Game Is Loaded";
     //funtion paddleInCanvas call 
     paddleInCanvas();
         
